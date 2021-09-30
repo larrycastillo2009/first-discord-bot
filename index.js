@@ -8,8 +8,8 @@ const {Client, Intents} = require('discord.js'); //import discord.js
 const client = new Discord.Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]}); //create new client
 
 async function getMeme() {
-    const res = await axios.get('https://memeapi.pythonanywhere.com/');
-    return res.data.memes[0].url;
+    const res = await axios.get('https://meme-api.herokuapp.com/gimme');
+    return res.data.url;
 }
 
 client.on('ready', () => {
@@ -20,6 +20,10 @@ client.on('message', async msg => {
     switch (msg.content) {
         case "ping":
             msg.reply("Pong!");
+            break;
+        //our meme command belowswitch (msg.content) {
+        case "Chris":
+            msg.reply("He has gotten a lot better at cooking lately!");
             break;
         //our meme command below
         case "!meme":
